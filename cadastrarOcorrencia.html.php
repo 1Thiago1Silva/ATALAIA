@@ -166,6 +166,7 @@ echo "
 
                 <!-- Botão de Cadastrar -->
                 <div class='d-flex justify-content-end mt-1'>
+                    <input type='hidden' name='usuario' value='$nomeUsuario'>
                     <input type='hidden' name='funcao' value='cadastrar'>
                     <button type='submit' class='btn btn-success'>Gerar Ocorrência</button>
                 </div>

@@ -6,7 +6,7 @@ class CConexao{
     }
 
     private function conexaoBanco(){
-        $conn = new MySQLi('localhost','root','','bd_ciops');
+        $conn = new MySQLi('localhost','root','','bd_atalaia');
         if($conn->connect_error){
             die("A Conexão Falhou: " .$conn->connect_error);
         }

@@ -1,13 +1,12 @@
 <?php
+session_start();
 
 include_once("head.html.php");
 include_once("COcorrencia.php");
 
 // Define Nome e Id do Usuário
-$nomeUsuario = "";
-$idUsuario = "";
-
-session_start();
+$nomeUsuario = $_SESSION["login_nome"];
+$idUsuario = $_SESSION["login_id"];
 
 if (isset($_SESSION["preencher"])) {
     if ($_SESSION["preencher"] == "1") {
@@ -79,7 +78,16 @@ if ($result) {
         <h3 class='mb-4'>Lista de Ocorrências</h3>
         <div class='btn-group-custom'>
             <div>
-                <input type='datetime-local' class='form-control' id='dataHora' name='dataHora' value='$dataHoraAtual' readonly>
+                <a href='ocorrenciasFiltradasPorTipo.html.php' class='btn btn-outline-dark'>Filtrar Por Tipo</a> 
+            </div>
+            <div>
+                <a href='ocorrenciasFiltradasPorCidade.html.php' class='btn btn-outline-dark'>Filtrar Por Cidade</a> 
+            </div>
+            <div>
+                <a href='ocorrenciasFiltradasPorTelefone.html.php' class='btn btn-outline-dark'>Filtrar Por Telefone</a> 
+            </div>
+            <div>
+                <a href='ocorrenciasCriadasPorMim.html.php' class='btn btn-outline-dark'>Ocorrências Criadas Por Mim</a> 
             </div>
             <div>
                 <a href='cadastrarOcorrencia.html.php' class='btn btn-primary'>Nova Ocorrência</a>

@@ -14,12 +14,12 @@ class COcorrencia{
     private $solicitante;
     private $telefone;
     
-    public function cadastrar($dataHora, $localizacao, $referencia, $bairro, $cidade, $tipo, $subtipo, $solicitante, $telefone) {
+    public function cadastrar($dataHora, $localizacao, $referencia, $bairro, $cidade, $tipo, $subtipo, $solicitante, $telefone, $usuario) {
         global $conexao;
     
         // Passo 1: Inserir a nova ocorrência
-        $sqlOcorrencia = "INSERT INTO ocorrencias (dataHora, localizacao, referencia, bairro, cidade, tipo, subtipo, solicitante, telefone) 
-                          VALUES ('$dataHora', '$localizacao', '$referencia', '$bairro', '$cidade', '$tipo', '$subtipo', '$solicitante', '$telefone')";
+        $sqlOcorrencia = "INSERT INTO ocorrencias (dataHora, localizacao, referencia, bairro, cidade, tipo, subtipo, solicitante, telefone, usuario) 
+                          VALUES ('$dataHora', '$localizacao', '$referencia', '$bairro', '$cidade', '$tipo', '$subtipo', '$solicitante', '$telefone', '$usuario')";
         $conexao->dml($sqlOcorrencia);
     
         // Obter o último ID inserido
@@ -169,8 +169,32 @@ class COcorrencia{
         return $conexao->dml($sql);
     }
 
+    public function criadasPorMim($usuario){
+        $sql = "SELECT * FROM ocorrencias WHERE usuario = '$usuario'";
+        global $conexao;
+        return $conexao->dql($sql);
+    }
+
     public function selecionarOcorrencia($id){
         $sql = "SELECT * FROM ocorrencias WHERE id = $id";
+        global $conexao;
+        return $conexao->dql($sql);
+    }
+
+    public function filtrarPorTipo($tipo) {
+        $sql = "SELECT * FROM ocorrencias WHERE tipo LIKE '%$tipo%' ORDER BY dataHora DESC";
+        global $conexao;
+        return $conexao->dql($sql);
+    }
+    
+    public function filtrarPorCidade($cidade) {
+        $sql = "SELECT * FROM ocorrencias WHERE cidade LIKE '%$cidade%' ORDER BY dataHora DESC";
+        global $conexao;
+        return $conexao->dql($sql);
+    }
+    
+    public function filtrarPorTelefone($telefone) {
+        $sql = "SELECT * FROM ocorrencias WHERE telefone LIKE '%$telefone%' ORDER BY dataHora DESC";
         global $conexao;
         return $conexao->dql($sql);
     }
@@ -194,7 +218,7 @@ class COcorrencia{
     }
 
     public function selecionarPorCargo($cargo) {
-        global $conexao; // Utilize a conexão global
+        global $conexao;
     
         // Lista de cargos que podem visualizar todas as ocorrências
         $cargosVerTodos = ["Monitor", "Coordenador", "Supervisor", "Suporte"];

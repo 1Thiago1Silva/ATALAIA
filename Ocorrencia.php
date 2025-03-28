@@ -14,7 +14,8 @@ switch($funcao) {
             $_POST['tipo'],
             $_POST['subtipo'],
             $_POST['solicitante'],
-            $_POST['telefone']
+            $_POST['telefone'],
+            $_POST['usuario']
         );
     break;
 

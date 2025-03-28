@@ -78,7 +78,16 @@ echo "
     <h3 class='mb-4'>Despacho de Ocorrências</h3>
     <div class='btn-group-custom'>
         <div>
-            <input type='datetime-local' class='form-control' id='dataHora' name='dataHora' value='$dataHoraAtual' readonly>
+            <a href='ocorrenciasFiltradasPorTipo.html.php' class='btn btn-outline-dark'>Filtrar Por Tipo</a> 
+        </div>
+        <div>
+            <a href='ocorrenciasFiltradasPorCidade.html.php' class='btn btn-outline-dark'>Filtrar Por Cidade</a> 
+        </div>
+        <div>
+            <a href='ocorrenciasFiltradasPorTelefone.html.php' class='btn btn-outline-dark'>Filtrar Por Telefone</a> 
+        </div>
+        <div>
+            <a href='ocorrenciasCriadasPorMim.html.php' class='btn btn-outline-dark'>Ocorrências Criadas Por Mim</a> 
         </div>
         <div>
             <a href='cadastrarOcorrencia.html.php' class='btn btn-primary'>Nova Ocorrência</a>

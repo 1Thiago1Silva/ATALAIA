@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/02/2025 às 14:56
+-- Tempo de geração: 28/03/2025 às 14:15
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `bd_ciops`
+-- Banco de dados: `bd_atalaia`
 --
 
 -- --------------------------------------------------------
@@ -52,18 +52,20 @@ CREATE TABLE `ocorrencias` (
   `subtipo` varchar(100) DEFAULT NULL,
   `solicitante` varchar(255) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
-  `status` enum('Aberta','Despachada','Retida','Finalizada') DEFAULT 'Aberta'
+  `status` enum('Aberta','Despachada','Retida','Finalizada') DEFAULT 'Aberta',
+  `usuario` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `ocorrencias`
 --
 
-INSERT INTO `ocorrencias` (`id`, `dataHora`, `localizacao`, `referencia`, `bairro`, `cidade`, `tipo`, `subtipo`, `solicitante`, `telefone`, `status`) VALUES
-(157, '2025-02-13 15:43:00', 'ocorrencia de TODOS', 'ocorrencia de TODOS', 'ocorrencia de TODOS', 'ocorrencia de TODOS', '[A900] TREINAMENTO', '[A900A] SIMULADO', 'ocorrencia de TODOS', 'ocorrencia de TODOS', 'Aberta'),
-(158, '2025-02-13 15:44:00', 'ocorrencia de PM', 'ocorrencia de PM', 'ocorrencia de PM', 'ocorrencia de PM', '[M310] ROUBO', '[M310B] A PESSOA', 'ocorrencia de PM', 'ocorrencia de PM', 'Aberta'),
-(159, '2025-02-13 15:45:00', 'ocorrencia de BM', 'ocorrencia de BM', 'ocorrencia de BM', 'ocorrencia de BM', '[IV1] INCÊNDIO EM VEGETAÇÃO - ÁREA PÚBLICA', '[IV1B] S/ VÍTIMA', 'ocorrencia de BM', 'ocorrencia de BM', 'Aberta'),
-(160, '2025-02-13 15:45:00', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'ocorrencia de GCMS', '[A8] SEMÁFORO COM DEFEITO', '[A8I] TRAVADO', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'Aberta');
+INSERT INTO `ocorrencias` (`id`, `dataHora`, `localizacao`, `referencia`, `bairro`, `cidade`, `tipo`, `subtipo`, `solicitante`, `telefone`, `status`, `usuario`) VALUES
+(158, '2025-02-13 15:44:00', 'ocorrencia de PM', 'ocorrencia de PM', 'ocorrencia de PM', 'ocorrencia de PM', '[M310] ROUBO', '[M310B] A PESSOA', 'ocorrencia de PM', 'ocorrencia de PM', 'Aberta', ''),
+(159, '2025-02-13 15:45:00', 'ocorrencia de BM', 'ocorrencia de BM', 'ocorrencia de BM', 'ocorrencia de BM', '[IV1] INCÊNDIO EM VEGETAÇÃO - ÁREA PÚBLICA', '[IV1B] S/ VÍTIMA', 'ocorrencia de BM', 'ocorrencia de BM', 'Aberta', ''),
+(160, '2025-02-13 15:45:00', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'ocorrencia de GCMS', '[A8] SEMÁFORO COM DEFEITO', '[A8I] TRAVADO', 'ocorrencia de GCMS', 'ocorrencia de GCMS', 'Aberta', ''),
+(164, '2025-03-18 11:19:00', 'Ocorrencia de Teste', 'Ocorrencia de Teste', 'Ocorrencia de Teste', 'Sobral', '[A900] TREINAMENTO', '[A900A] SIMULADO', 'Ocorrencia de Teste', '88999887761', 'Aberta', 'Thiago.Barbosa'),
+(165, '2025-03-18 12:11:00', 'teste do suporte', 'teste do suporte', 'teste do suporte', 'Sobral', '[A900] TREINAMENTO', '[A900A] SIMULADO', 'teste do suporte', '88999887760', 'Aberta', 'Thiago.Silva');
 
 -- --------------------------------------------------------
 
@@ -82,12 +84,15 @@ CREATE TABLE `ocorrencia_responsavel` (
 --
 
 INSERT INTO `ocorrencia_responsavel` (`id`, `idOcorrencia`, `idTipo`) VALUES
-(15, 157, 50),
-(16, 157, 50),
-(17, 157, 50),
 (18, 158, 228),
 (19, 159, 213),
-(20, 160, 35);
+(20, 160, 35),
+(34, 165, 50),
+(35, 165, 50),
+(36, 165, 50),
+(37, 164, 50),
+(38, 164, 50),
+(39, 164, 50);
 
 -- --------------------------------------------------------
 
@@ -869,7 +874,34 @@ INSERT INTO `subtipos` (`idSubtipo`, `nomeSubtipo`, `idTipo`) VALUES
 (765, '[Z14C] ESCOLA PARTICULAR', 380),
 (766, '[Z14D] EM PRAÇA', 380),
 (767, '[Z14E] POSTO DE SAÚDE', 380),
-(768, '[Z14F] OUTROS', 380);
+(768, '[Z14F] OUTROS', 380),
+(769, '[Z05A] VISITA DE INCLUSÃO NO GAVV', 371),
+(770, '[Z05B] VISITA DE RECUSA DE INCLUSÃO', 371),
+(771, '[Z05C] VISITA AO AGRESSOR', 371),
+(772, '[Z05D] VISITA DE MONITORAMENTO', 371),
+(773, '[Z05E] VISITA DE DESLIGAMENTO', 371),
+(774, '[Z05F] VISITA DE ENCERRAMENTO', 371),
+(775, '[Z05G] ENCAMINHAMENTO PARA A REDE', 371),
+(776, '[Z06A] VISITA DE INCLUSÃO NO GAVV', 372),
+(777, '[Z06B] VISITA DE RECUSA DE INCLUSÃO', 372),
+(778, '[Z06C] VISITA AO AGRESSOR', 372),
+(779, '[Z06D] VISITA DE MONITORAMENTO', 372),
+(780, '[Z06E] VISITA DE DESLIGAMENTO', 372),
+(781, '[Z06F] VISITA POR QUEBRA DE MEDIDA DO AGRESSOR', 372),
+(782, '[Z06G] VISITA POR QUEBRA DE MEDIDA DA VÍTIMA', 372),
+(783, '[Z06H] VISITA DE ENCERRAMENTO', 372),
+(784, '[Z07A] VISITA DE INCLUSÃO NO GAVV', 373),
+(785, '[Z07B] VISITA DE RECUSA DE INCLUSÃO', 373),
+(786, '[Z07C] VISITA AO AGRESSOR', 373),
+(787, '[Z07D] VISITA DE MONITORAMENTO', 373),
+(788, '[Z07E] VISITA DE DESLIGAMENTO', 373),
+(789, '[Z07F] VISITA DE ENCERRAMENTO', 373),
+(790, '[Z08A] VISITA DE INCLUSÃO NO GAVV', 374),
+(791, '[Z08B] VISITA DE RECUSA DE INCLUSÃO', 374),
+(792, '[Z08C] VISITA AO AGRESSOR', 374),
+(793, '[Z08D] VISITA DE MONITORAMENTO', 374),
+(794, '[Z08E] VISITA DE DESLIGAMENTO', 374),
+(795, '[Z08F] VISITA DE ENCERRAMENTO', 374);
 
 -- --------------------------------------------------------
 
@@ -1298,7 +1330,7 @@ INSERT INTO `tipo_responsavel` (`id`, `idTipo`, `responsavel`) VALUES
 (16, 14, 'Despacho_PM'),
 (17, 15, 'Despacho_PM'),
 (18, 16, 'Despacho_PM'),
-(19, 16, 'Despacho_BM'),
+(19, 16, 'Despacho_PM'),
 (20, 16, 'Despacho_GCMS'),
 (21, 17, 'Despacho_PM'),
 (22, 17, 'Despacho_BM'),
@@ -1723,17 +1755,6 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `cpf`, `cargo`) VALUES
-(1, 'Thiago.Barbosa', '06334603388', 'Teleatendente'),
-(8, 'Thiago.Silva', '063TESTE88', 'Suporte'),
-(11, 'PM TESTE', 'PMTESTE', 'Despacho_PM'),
-(12, 'BM TESTE', 'BMTESTE', 'Despacho_BM'),
-(13, 'GCM TESTE', 'GCMTESTE', 'Despacho_GCMS');
-
---
 -- Índices para tabelas despejadas
 --
 
@@ -1794,25 +1815,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `ocorrencias`
 --
 ALTER TABLE `ocorrencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT de tabela `ocorrencia_responsavel`
 --
 ALTER TABLE `ocorrencia_responsavel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de tabela `subtipos`
 --
 ALTER TABLE `subtipos`
-  MODIFY `idSubtipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
+  MODIFY `idSubtipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=796;
 
 --
 -- AUTO_INCREMENT de tabela `tipos`
@@ -1830,7 +1851,7 @@ ALTER TABLE `tipo_responsavel`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
