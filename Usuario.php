@@ -10,6 +10,7 @@ switch ($funcao) {
             $_POST['cpf'],
             $_POST['cargo']
         );
+        header('cadastrarUsuario.html.php');
     break;
 
     case "login":
