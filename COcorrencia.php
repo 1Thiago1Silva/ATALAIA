@@ -210,6 +210,14 @@ class COcorrencia{
         return $ocorrencias;
     }
 
+    public function filtrarPorData($dataInicio, $dataFim) {
+        global $conexao;
+        $sql = "SELECT * FROM ocorrencias 
+                WHERE dataHora BETWEEN '$dataInicio' AND '$dataFim'
+                ORDER BY dataHora DESC";
+        return $conexao->dql($sql);
+    }    
+
     public function selecionarTodas(){
         $sql = "SELECT * FROM ocorrencias ORDER BY dataHora DESC";
         //objeto usando a função DQL - Data Query¹ Language  (Linguagem de ¹Consulta de Dados)

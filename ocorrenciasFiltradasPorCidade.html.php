@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['cidade'])) {
         h3 {
             text-align: center;
             font-weight: bold;
+            text-decoration: underline;
         }
         table {
             width: 100%;
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['cidade'])) {
         }
         .btn-group-custom {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             gap: 10px;
             margin-bottom: 10px;
         }

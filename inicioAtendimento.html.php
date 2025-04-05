@@ -40,6 +40,7 @@ if ($result) {
         h3 {
             text-align: center;
             font-weight: bold;
+            text-decoration: underline;
         }
         .shadow-sm {
             box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.99);
@@ -58,7 +59,7 @@ if ($result) {
         }
         .btn-group-custom {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             gap: 10px;
             margin-bottom: 10px;
         }
@@ -71,29 +72,55 @@ if ($result) {
     </style>
     </head>
     <body>
-    <div class='mt-2' style='text-align: center;'>
-        <img src='./assets/atalaia.jpg' width='300px'>
+    <div class='container-fluid position-relative'>
+        <!-- Imagem centralizada -->
+        <div class='text-center'>
+            <img src='./assets/atalaia.jpg' width='300px' alt='Atalaia'>
+        </div>
+        <!-- Dropdown posicionado no canto superior direito -->
+        <div class='position-absolute' style='top: 0; right: 0; margin: 1rem;'>
+            <div class='dropdown'>
+            <button class='btn btn-info dropdown-toggle d-flex align-items-center' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' style='width:16px; height:16px; margin-right:4px;'>
+                <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path d='M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM625 177L497 305c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L591 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/>
+                </svg>
+                $nomeUsuario
+            </button>
+            <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownMenuButton'>
+                <li><a class='dropdown-item' href='logout.php'>Deslogar</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
     </div>
     <div class='container mt-4'>
         <h3 class='mb-4'>Lista de Ocorrências</h3>
         <div class='btn-group-custom'>
             <div>
-                <a href='ocorrenciasFiltradasPorTipo.html.php' class='btn btn-outline-dark'>Filtrar Por Tipo</a> 
-            </div>
-            <div>
-                <a href='ocorrenciasFiltradasPorCidade.html.php' class='btn btn-outline-dark'>Filtrar Por Cidade</a> 
-            </div>
-            <div>
-                <a href='ocorrenciasFiltradasPorTelefone.html.php' class='btn btn-outline-dark'>Filtrar Por Telefone</a> 
-            </div>
-            <div>
-                <a href='ocorrenciasCriadasPorMim.html.php' class='btn btn-outline-dark'>Ocorrências Criadas Por Mim</a> 
+                <div class='dropdown'>
+                    <button class='btn btn-success dropdown-toggle d-flex align-items-center' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' height='16' style='margin-right: 6px;'>
+                            <!-- Ícone de filtro -->
+                            <path fill='currentColor' d='M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z'/>
+                        </svg>
+                        Filtros
+                    </button>
+                    <ul class='dropdown-menu'>
+                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorData.html.php'>Filtrar Por Data</a></li>
+                        <li><hr class='dropdown-divider'></li>
+                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorTipo.html.php'>Filtrar Por Tipo</a></li>
+                        <li><hr class='dropdown-divider'></li>
+                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorCidade.html.php'>Filtrar Por Cidade</a></li>
+                        <li><hr class='dropdown-divider'></li>
+                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorTelefone.html.php'>Filtrar Por Telefone</a></li>
+                        <li><hr class='dropdown-divider'></li>
+                        <li><a class='dropdown-item' href='ocorrenciasCriadasPorMim.html.php'>Ocorrências Criadas Por Mim</a></li>
+                    </ul>
+                </div>
             </div>
             <div>
                 <a href='cadastrarOcorrencia.html.php' class='btn btn-primary'>Nova Ocorrência</a>
-            </div>
-            <div>
-                <a href='logout.php' class='btn btn-danger'>Deslogar</a>
             </div>
         </div>
     ";
@@ -120,13 +147,6 @@ if ($result) {
                         <input type='hidden' name='id' value='$linha[id]'>
                         <input type='hidden' name='funcao' value='editar'>
                         <button class='btn btn-warning btn-editar'>Editar</button>
-                    </form>
-
-                    <!-- Botão Deletar -->
-                    <form action='Ocorrencia.php' method='post' class='m-0'>
-                        <input type='hidden' name='id' value='$linha[id]'>
-                        <input type='hidden' name='funcao' value='deletar'>
-                        <button class='btn btn-danger btn-deletar'>Deletar</button>
                     </form>
                 </div>
             </div>

@@ -24,6 +24,7 @@ echo "
     h3 {
         text-align: center;
         font-weight: bold;
+        text-decoration: underline;
     }
     .shadow-sm {
         box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.99);
@@ -42,7 +43,7 @@ echo "
     }
     .btn-group-custom {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         gap: 10px;
         margin-bottom: 10px;
     }
@@ -68,9 +69,6 @@ echo "
                 echo "<a href='inicioDespacho.html.php' class='btn btn-primary'>Ir para Página Inicial</a>";
             }
         echo"
-        </div>
-        <div>
-            <a href='logout.php' class='btn btn-danger'>Deslogar</a>
         </div>
     </div>
 ";
