@@ -199,6 +199,14 @@ class COcorrencia{
         return $conexao->dql($sql);
     }
 
+    public function filtrarPorData($dataInicio, $dataFim) {
+        global $conexao;
+        $sql = "SELECT * FROM ocorrencias 
+                WHERE dataHora BETWEEN '$dataInicio' AND '$dataFim'
+                ORDER BY dataHora DESC";
+        return $conexao->dql($sql);
+    }
+
     public function selecionarPorStatus($status) {
         $sql = "SELECT * FROM ocorrencias WHERE status = '$status' ORDER BY dataHora DESC";
         global $conexao;
@@ -208,14 +216,6 @@ class COcorrencia{
             $ocorrencias[] = $linha;
         }
         return $ocorrencias;
-    }
-
-    public function filtrarPorData($dataInicio, $dataFim) {
-        global $conexao;
-        $sql = "SELECT * FROM ocorrencias 
-                WHERE dataHora BETWEEN '$dataInicio' AND '$dataFim'
-                ORDER BY dataHora DESC";
-        return $conexao->dql($sql);
     }    
 
     public function selecionarTodas(){

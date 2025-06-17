@@ -1,5 +1,5 @@
 <?php
-echo"
+echo "
 <!DOCTYPE html>
 <html lang='pt-br'>
 <head>
@@ -7,23 +7,23 @@ echo"
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    
-    <!-- Link para o Bootstrap 5 (última versão estável) CSS -->
-    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
 
-    <!-- Link para o Font Awesome (última versão) -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'>
+    <!-- Bootstrap 5.3.6 CSS -->
+    <link rel='stylesheet' href='libs/bootstrap/css/bootstrap.min.css'>
 
-    <!-- Link para o jQuery (versão mais recente) -->
-    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <!-- Font Awesome 6.5.1 CSS -->
+    <link rel='stylesheet' href='libs/fontawesome/css/all.min.css'>
 
-    <!-- Link para o Bootstrap 5 (última versão estável) JS -->
-    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <!-- jQuery UI 1.13.2 CSS -->
+    <link rel='stylesheet' href='libs/jquery-ui/jquery-ui.min.css'>
 
-    <!-- Link para o seu arquivo CSS personalizado (se você tiver) -->
-    <link href='css/estilos.css' rel='stylesheet'>
-    
-    <!-- Link para o seu arquivo JavaScript personalizado (se você tiver) -->
-    <script src='js/scripts.js'></script>
+    <!-- jQuery 3.7.1 -->
+    <script src='libs/jquery/jquery-3.7.1.min.js'></script>
+
+    <!-- Bootstrap 5.3.6 JS (com Popper incluído) -->
+    <script src='libs/bootstrap/js/bootstrap.bundle.min.js'></script>
+
+    <!-- jQuery UI 1.13.2 JS -->
+    <script src='libs/jquery-ui/jquery-ui.min.js'></script>
 ";
 ?>

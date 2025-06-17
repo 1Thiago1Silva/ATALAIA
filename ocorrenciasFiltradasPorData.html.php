@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 
 <div class='container mt-4'>
-    <h3 class='mb-2'>Ocorrências Criadas Por Data</h3>
+    <h3 class='mb-2'>Filtrar Ocorrências Por Data</h3>
     <div class='btn-group-custom'>
         <div>
             <?php

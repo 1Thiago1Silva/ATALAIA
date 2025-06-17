@@ -69,6 +69,17 @@ if ($result) {
             gap: 10px;
             margin-bottom: 2px;
         }
+        /* Corrigir cor do texto e adicionar hover no dropdown */
+        .dropdown-menu.bg-success .dropdown-item {
+            color: white; /* Garante que o texto seja branco */
+        }
+        .dropdown-menu.bg-success .dropdown-item:hover {
+            background-color: #146c43; /* Tom mais escuro de verde para o hover */
+            color: white; /* Mantém o texto branco no hover */
+        }
+        .dropdown-menu.bg-success .dropdown-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.5); /* Divider branco com opacidade */
+        }
     </style>
     </head>
     <body>
@@ -106,16 +117,16 @@ if ($result) {
                         </svg>
                         Filtros
                     </button>
-                    <ul class='dropdown-menu'>
-                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorData.html.php'>Filtrar Por Data</a></li>
+                    <ul class='dropdown-menu bg-success'>
+                        <li><a class='dropdown-item text-white' href='ocorrenciasFiltradasPorData.html.php'>Filtrar Por Data</a></li>
                         <li><hr class='dropdown-divider'></li>
-                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorTipo.html.php'>Filtrar Por Tipo</a></li>
+                        <li><a class='dropdown-item text-white' href='ocorrenciasFiltradasPorTipo.html.php'>Filtrar Por Tipo</a></li>
                         <li><hr class='dropdown-divider'></li>
-                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorCidade.html.php'>Filtrar Por Cidade</a></li>
+                        <li><a class='dropdown-item text-white' href='ocorrenciasFiltradasPorCidade.html.php'>Filtrar Por Cidade</a></li>
                         <li><hr class='dropdown-divider'></li>
-                        <li><a class='dropdown-item' href='ocorrenciasFiltradasPorTelefone.html.php'>Filtrar Por Telefone</a></li>
+                        <li><a class='dropdown-item text-white' href='ocorrenciasFiltradasPorTelefone.html.php'>Filtrar Por Telefone</a></li>
                         <li><hr class='dropdown-divider'></li>
-                        <li><a class='dropdown-item' href='ocorrenciasCriadasPorMim.html.php'>Ocorrências Criadas Por Mim</a></li>
+                        <li><a class='dropdown-item text-white' href='ocorrenciasCriadasPorMim.html.php'>Ocorrências Criadas Por Mim</a></li>
                     </ul>
                 </div>
             </div>

@@ -61,9 +61,6 @@ if ($result) {
     $comentariosResult = $comentarioObj->selecionarTodos($id);
     echo"
     <title>Editar Ocorrência</title>
-    <script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>
-    <script src='https://code.jquery.com/ui/1.13.2/jquery-ui.min.js'></script>
-    <link rel='stylesheet' href='https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
     <style>
         h3 {
             text-align: center;
